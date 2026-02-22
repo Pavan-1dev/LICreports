@@ -141,7 +141,7 @@ ID = 0.4 × 10^-3 / 1.2   = 0.333 mA
 
 To maintain a safety margin and avoid exceeding the power limit, a design current of:
 
-ID ≈ 250 uA
+**ID ≈ 250 uA**
 
 
 
@@ -149,9 +149,9 @@ ID ≈ 250 uA
 
 To determine the required width of the PMOS transistor for the chosen drain current, the saturation current equation for PMOS is used:
 
-up = 0.0115689 m^2/V·s
+**up = 0.0115689 m^2/V·s**
 
-Cox = 0.0084207 F/m^2
+**Cox = 0.0084207 F/m^2**
 
 L = 360 nm = 360 × 10^-9m
 
@@ -161,7 +161,7 @@ ID = 250 uA = 250 × 10⁻^-6A
 
 ID = (1/2) × up × Cox × (W/L) × (VOV)^2
 
-W = 42 u
+**W = 42 u**
 
 
 
@@ -171,7 +171,7 @@ VD ≈ VDD / 2
 
 VD ≈ 1.2 / 2
 
-VD = 0.6 V
+**VD = 0.6 V**
 
 
 
@@ -185,7 +185,7 @@ RD = 0.6 / (250 × 10^-6)
 
 RD = 2400 ohm
 
-RD = 2.4 kilo-ohm
+**RD = 2.4 kilo-ohm**
 
 Thus, a drain resistor of 2.4 kΩ is selected.
 
@@ -199,7 +199,7 @@ The threshold voltage magnitude is:
 
 To ensure saturation operation, choose:
 
-VSG ≈ 0.6 V
+**VSG ≈ 0.6 V**
 
 Overdrive voltage is:
 
@@ -207,7 +207,7 @@ VOV = VSG − |VT|
 
 VOV = 0.6 − 0.3906
 
-VOV = 0.2094 V
+**VOV = 0.2094 V**
 
 # 6. Calculation of Gate Voltage
 
@@ -221,7 +221,7 @@ VG = VS − VSG
 
 VG = 1.2 − 0.6
 
-VG = 0.6 V
+**VG = 0.6 V**
 
 
 
@@ -241,7 +241,7 @@ VSD = 0.6 V
 
 Since:
 
-0.6 V > 0.2094 V
+**0.6 V > 0.2094 V**
 
 
 
@@ -298,9 +298,9 @@ Output voltage, Vout = 0.359058 V
 
 These values are significantly lower than the expected theoretical values:
 
-Expected ID ≈ 250 uA
+**Expected ID ≈ 250 uA**
 
-Expected Vout ≈ 0.6 V
+**Expected Vout ≈ 0.6 V**
 
 The reduction in drain current and output voltage occurs due to short-channel effects and mobility degradation present in the realistic TSMC 180nm BSIM transistor model, which are not accounted for in the ideal square-law MOSFET equation.
 
@@ -310,15 +310,15 @@ To achieve the desired drain current and output voltage, the PMOS width was grad
 
 After iterative adjustment, the width was set to:
 
-W = 72 um
+**W = 72 um**
 
 The DC operating point was re-evaluated using the .op command.
 
 The new operating point obtained was:
 
-Drain current, ID ≈ 247 uA
+**Drain current, ID ≈ 247 uA**
 
-Output voltage, Vout ≈ 0.59 V
+**Output voltage, Vout ≈ 0.59 V**
 
 These values closely match the theoretical design targets
 
@@ -355,11 +355,11 @@ In transient analysis, the voltage gain is calculated using both theoretical for
 
 For a Common Source amplifier:
 
-Av = − gm × RD
+**Av = − gm × RD**
 
 First calculate transconductance:
 
-gm = 2 × ID / VOV
+**gm = 2 × ID / VOV**
 
 
 Given:
@@ -370,7 +370,7 @@ VOV = 0.2094 V
 
 gm = (2 × 250 × 10^-6) / 0.2094
 
-gm = 2.39 mS
+**gm = 2.39 mS**
 
 
 Now calculate gain:
@@ -381,7 +381,7 @@ RD = 2.4 kohm
 
 Av = 0.00239 × 2400
 
-Av = 5.736
+**Av = 5.736**
 
 
 Now convert to decibels:
@@ -390,7 +390,7 @@ Gain (dB) = 20 × log10(Av)
 
 Gain (dB) = 20 × log10(5.736)
 
-Gain (dB) = 15.16 dB
+**Gain (dB) = 15.16 dB**
 
 
 
@@ -398,18 +398,18 @@ Gain (dB) = 15.16 dB
 
 From transient simulation:
 
-input p-p = 20 mV
+**input p-p = 20 mV**
 
-Output p-p = 136.05 mV
+**Output p-p = 136.05 mV**
 
 
 Voltage gain:
 
-Av = Vout / Vin
+**Av = Vout / Vin**
 
 Av = 136.05 / 20
 
-Av = 6.8025
+**Av = 6.8025**
 
 
 Now convert to dB:
@@ -419,14 +419,14 @@ Gain (dB) = 20 × log10(6.8025)
 
 Gain (dB) = 20 × 0.8326
 
-Gain (dB) = 16.65 dB
+**Gain (dB) = 16.65 dB**
 
 
 # C.Comparison
 
-Theoretical Gain = 15.16 dB
+**Theoretical Gain = 15.16 dB**
 
-Simulation Gain = 16.65 dB
+**Simulation Gain = 16.65 dB**
 
 The slight difference occurs due to:
 
@@ -450,7 +450,7 @@ From the AC magnitude plot, the mid-band voltage gain is obtained from the flat 
 From the flat portion of the AC magnitude plot:
 
 
-Gain in dB = 16.912 dB
+**Gain in dB = 16.912 dB**
 
 Convert to linear scale:
 
@@ -459,12 +459,12 @@ Av = 10^(Gain(dB)/20)
 
 Av = 10^(16.912/20)
 
-Av = 6.80 V/V
+**Av = 6.80 **
 
 Thus, the mid-band voltage gain is:
 
 
-Av ≈ 6.8 V/V
+Av ≈ 6.8 
 
 
 # B.Theoritical Bandwidth
@@ -472,7 +472,7 @@ Av ≈ 6.8 V/V
 The theoretical bandwidth of a single-pole amplifier is given by:
 
 
-BW = 1 / (2 × π × RD × CL)
+**BW = 1 / (2 × π × RD × CL)**
 
 Given:
 
@@ -483,7 +483,7 @@ CL = 0.5 pF
 
 BW = 1 / (2 × π × 2400 × 0.5 × 10^-12)
 
-BW = 132.63 MHz
+**BW = 132.63 MHz**
 
 
 # C.Simulation Bandwidth
@@ -501,19 +501,19 @@ This frequency corresponds to the point where the gain drops by 3 dB from the mi
 For a single-pole amplifier, the gain-bandwidth product is constant and given by:
 
 
-UGB = Av × BW
+**UGB = Av × BW**
 
 From AC analysis, Av = 6.8 and BW = 131.8 MHz,
 
 hence:
 
 
-UGB = 6.8 × 131.8 ≈ 896 MHz, which is close to the unity gain frequency observed in the plot (≈ 913 MHz).
+**UGB = 6.8 × 131.8 ≈ 896 MHz, which is close to the unity gain frequency observed in the plot (≈ 913 MHz).**
 
 
 # RESULT
 
-The PMOS Common Source amplifier was successfully designed and simulated using TSMC 180 nm technology. The DC operating point obtained from simulation showed a drain current of approximately 247 µA and an output voltage of about 0.59 V, confirming proper biasing in the saturation region. Transient analysis demonstrated that the output signal was amplified and inverted with respect to the input, verifying common source operation. AC analysis provided a stable mid-band voltage gain of about 6.8 V/V (approximately 16.9 dB). The theoretical bandwidth was calculated as 132.6 MHz, while the simulated bandwidth was observed to be around 131.8 MHz. The unity gain bandwidth obtained from the frequency response was approximately 913 MHz, which closely matched the gain–bandwidth product.
+The PMOS Common Source amplifier was successfully designed and simulated using TSMC 180 nm technology. The **DC operating point** obtained from simulation showed a drain current of approximately **247 µA** and an **output voltage** of about **0.59 V**, confirming proper biasing in the saturation region. Transient analysis demonstrated that the output signal was amplified and inverted with respect to the input, verifying common source operation. AC analysis provided a stable **mid-band voltage gain of about 6.8** (approximately 16.9 dB). The theoretical bandwidth was calculated as 132.6 MHz, while the **simulated bandwidth was observed to be around 131.8 MHz.** The unity gain bandwidth obtained from the frequency response was approximately 913 MHz, which closely matched the gain–bandwidth product.
 
 
 # INFERENCE
