@@ -310,15 +310,15 @@ To achieve the desired drain current and output voltage, the PMOS width was grad
 
 After iterative adjustment, the width was set to:
 
-**W = 72 um**
+**W = 73 um**
 
 The DC operating point was re-evaluated using the .op command.
 
 The new operating point obtained was:
 
-**Drain current, ID ≈ 247 uA**
+**Drain current, ID ≈ 250.163 uA**
 
-**Output voltage, Vout ≈ 0.59 V**
+**Output voltage, Vout ≈  0.600391 V**
 
 These values closely match the theoretical design targets
 
