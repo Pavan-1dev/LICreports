@@ -359,14 +359,14 @@ For a Common Source amplifier:
 
 First calculate transconductance:
 
-**gm = 2 × ID / VOV**
+**gm = 2 × ID / vov**
 
 
 Given:
 
-ID = 250 uA
+id = 250 uA
 
-VOV = 0.2094 V
+vov = 0.2094 V
 
 gm = (2 × 250 × 10^-6) / 0.2094
 
@@ -381,7 +381,7 @@ RD = 2.4 kohm
 
 Av = 0.00239 × 2400
 
-**Av = 5.736**
+**Av = 5.736 v/v**
 
 
 Now convert to decibels:
@@ -409,7 +409,7 @@ Voltage gain:
 
 Av = 136.05 / 20
 
-**Av = 6.8025**
+**Av = 6.8025 v/v**
 
 
 Now convert to dB:
@@ -459,12 +459,12 @@ Av = 10^(Gain(dB)/20)
 
 Av = 10^(16.912/20)
 
-**Av = 6.80 **
+**Av = 6.80 v/v **
 
 Thus, the mid-band voltage gain is:
 
 
-Av ≈ 6.8 
+Av ≈ 6.8 v/v
 
 
 # B.Theoritical Bandwidth
@@ -503,7 +503,7 @@ For a single-pole amplifier, the gain-bandwidth product is constant and given by
 
 **UGB = Av × BW**
 
-From AC analysis, Av = 6.8 and BW = 131.8 MHz,
+From AC analysis, Av = 6.8 v/v and BW = 131.8 MHz,
 
 hence:
 
@@ -513,7 +513,7 @@ hence:
 
 # RESULT
 
-The PMOS Common Source amplifier was successfully designed and simulated using TSMC 180 nm technology. The **DC operating point** obtained from simulation showed a drain current of approximately **247 µA** and an **output voltage** of about **0.59 V**, confirming proper biasing in the saturation region. Transient analysis demonstrated that the output signal was amplified and inverted with respect to the input, verifying common source operation. AC analysis provided a stable **mid-band voltage gain of about 6.8** (approximately 16.9 dB). The theoretical bandwidth was calculated as 132.6 MHz, while the **simulated bandwidth was observed to be around 131.8 MHz.** The unity gain bandwidth obtained from the frequency response was approximately 913 MHz, which closely matched the gain–bandwidth product.
+The PMOS Common Source amplifier was successfully designed and simulated using TSMC 180 nm technology. The **DC operating point** obtained from simulation showed a drain current of approximately **247 µA** and an **output voltage** of about **0.59 V**, confirming proper biasing in the saturation region. Transient analysis demonstrated that the output signal was amplified and inverted with respect to the input, verifying common source operation. AC analysis provided a stable **mid-band voltage gain of about 6.8 v/v** (approximately 16.9 dB). The theoretical bandwidth was calculated as 132.6 MHz, while the **simulated bandwidth was observed to be around 131.8 MHz.** The unity gain bandwidth obtained from the frequency response was approximately 913 MHz, which closely matched the gain–bandwidth product.
 
 
 # INFERENCE
