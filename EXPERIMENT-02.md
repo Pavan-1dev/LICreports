@@ -218,7 +218,7 @@ L = 360 nm
 
 # CIRCUIT
 
-![Circuit](CIRCUIT.png)
+![Image description](CIRCUIT.jpeg)
 
 ---
 
