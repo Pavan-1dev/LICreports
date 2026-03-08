@@ -218,7 +218,7 @@ L = 360 nm
 
 # CIRCUIT
 
-![Image description](CIRCUIT.jpeg)
+![Image description](CIRCUIT01-EXP02.png)
 
 ---
 
@@ -248,7 +248,10 @@ Vout = 0.8 V
 
 The simulated value closely matches the theoretical design target, confirming correct biasing.
 
+
 ---
+
+![Image description](Q-POINT01-EXP02.png)
 
 # TRANSIENT ANALYSIS
 
@@ -278,6 +281,8 @@ Vin(pp) = 20 mV
 
 ---
 
+
+
 # Voltage Gain Calculation
 
 Voltage gain:
@@ -299,6 +304,7 @@ Gain = 20 log10(14.77)
 Gain ≈ 23.38 dB
 
 ---
+![Image description](TRANSIENTVOUT01-EXP02.png)
 
 # AC ANALYSIS – GAIN AND BANDWIDTH CALCULATION
 
@@ -315,6 +321,7 @@ Av = 10^(23.7 / 20)
 Av ≈ 15.34 V/V
 
 ---
+![Image description](AC01-EXP02.png)
 
 ## Bandwidth
 
@@ -325,6 +332,7 @@ BW ≈ 15 MHz
 This is the frequency where the gain drops by **3 dB from the midband gain**.
 
 ---
+![Image description](BW01-EXP02.png)
 
 ## Unity Gain Bandwidth
 
@@ -343,6 +351,7 @@ UGB ≈ 244 MHz
 The slight difference occurs due to **parasitic capacitances and non-ideal transistor behavior**.
 
 ---
+![Image description](UGB01-EXP02.png)
 
 # RESULT
 
