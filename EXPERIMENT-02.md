@@ -372,3 +372,457 @@ The experiment successfully demonstrated the design and analysis of a **CMOS amp
 DC analysis confirmed that the transistors operate in the saturation region, ensuring proper biasing. Transient analysis verified signal amplification, while AC analysis validated the expected gain and bandwidth characteristics.
 
 The close agreement between theoretical calculations and simulation results confirms the effectiveness of CMOS amplifier design using **LTspice and TSMC 180 nm technology**.
+
+
+# EXPERIMENT 03
+
+# AIM
+
+Design and analyze a **CMOS amplifier with PMOS active load and NMOS current source biasing** using **TSMC 180 nm CMOS technology** and characterize the circuit performance using:
+
+- **DC Operating Point Analysis**
+- **Transient Analysis**
+- **AC Small Signal Analysis**
+
+Specifications:
+
+| Parameter | Value |
+|----------|------|
+| Supply Voltage | **VDD = 1.2 V** |
+| Drain Current | **ID = 250 µA** |
+| Load Capacitance | **CL = 0.5 pF** |
+| Channel Length | **L = 360 nm** |
+
+Simulation tool used: **LTspice**
+
+---
+
+# COMPONENTS REQUIRED
+
+1. PMOS transistor (TSMC 180nm model)  
+2. NMOS transistor (TSMC 180nm model)  
+3. DC voltage sources  
+4. Signal voltage source  
+5. Capacitor CL  
+
+---
+
+# THEORY
+
+MOSFETs form the fundamental building blocks of modern integrated circuits. CMOS technology combines **NMOS and PMOS devices** to achieve high performance with low power consumption.
+
+In this circuit:
+
+- **M1 (PMOS)** acts as an **active load**
+- **M3 (NMOS)** acts as the **amplifying transistor**
+- **M4 (NMOS)** acts as a **current source**
+
+This configuration provides:
+
+- High output resistance  
+- Stable biasing  
+- High input impedance  
+
+However, because of **source degeneration caused by the current source transistor**, the voltage gain may reduce compared to a simple common source amplifier.
+
+---
+
+# SATURATION CONDITIONS
+
+### NMOS Saturation
+
+$$
+V_{GS} > V_T
+$$
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+where
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+---
+
+### PMOS Saturation
+
+$$
+V_{SG} > |V_T|
+$$
+
+$$
+V_{SD} \ge V_{OV}
+$$
+
+where
+
+$$
+V_{OV} = V_{SG} - |V_T|
+$$
+
+---
+
+# PROCEDURE
+
+### 1. Include Technology Model
+
+The TSMC 180 nm model library was included using:
+
+```
+.lib tsmc018.lib
+```
+
+---
+
+### 2. Build CMOS Amplifier Circuit
+
+The circuit consists of:
+
+- PMOS transistor connected to **VDD**
+- NMOS transistor acting as **gain stage**
+- NMOS transistor acting as **current source**
+- Output taken from the **drain node**
+- Load capacitor connected at the output
+
+---
+
+# DESIGN CALCULATIONS
+
+## 1. Output Voltage Selection
+
+The output voltage is chosen as:
+
+$$
+V_{out} = \frac{V_{DD}}{2} + V_{OS}
+$$
+
+Given:
+
+$$
+V_{OV} = 0.25V
+$$
+
+Taking:
+
+$$
+V_{OS} = 0.3V
+$$
+
+Therefore:
+
+$$
+V_{out} = 0.6 + 0.3 = 0.9V
+$$
+
+---
+
+## 2. Drain Current Selection
+
+Design current:
+
+**ID = 250 µA**
+
+---
+
+## 3. Bias Voltage for PMOS
+
+$$
+V_{SG} = V_{OV} + |V_{TP}|
+$$
+
+$$
+V_{SG} = 0.25 + 0.39
+$$
+
+$$
+V_{SG} = 0.64V
+$$
+
+Since
+
+$$
+V_{SG} = V_S - V_G
+$$
+
+$$
+0.64 = 1.2 - V_G
+$$
+
+$$
+V_G = 0.56V
+$$
+
+Therefore
+
+**VB1 = 0.56 V**
+
+---
+
+## 4. Bias Voltage for NMOS Current Source
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+$$
+0.25 = V_{GS} - 0.36
+$$
+
+$$
+V_{GS} = 0.61V
+$$
+
+$$
+V_{B2} = V_{GS} + V_{OS}
+$$
+
+$$
+V_{B2} = 0.61 + 0.3
+$$
+
+$$
+V_{B2} = 0.91V
+$$
+
+---
+
+# DEVICE DIMENSIONS
+
+### Initial Calculated Widths
+
+| Parameter | Value |
+|----------|------|
+| Wn | **12.5 µm** |
+| Wp | **29.57 µm** |
+| L | **360 nm** |
+
+---
+
+### Final Width After Adjustment
+
+| Parameter | Value |
+|----------|------|
+| Wn | **31.5 µm** |
+| Wp | **74.8 µm** |
+| L | **360 nm** |
+
+---
+
+# CIRCUIT
+
+<p align="center">
+<img src="CIRCUIT.png" width="420">
+</p>
+
+<p align="center">
+<b>Fig 1: CMOS Amplifier Circuit</b>
+</p>
+
+---
+
+# DC ANALYSIS
+
+DC analysis determines the **operating point (Q-point)** of the MOSFET amplifier.
+
+---
+
+# Q-POINT VERIFICATION
+
+### Using Calculated Width
+
+Simulation produced:
+
+**Drain Current**
+
+ID ≈ **99.7 µA**
+
+**Output Voltage**
+
+Vout ≈ **0.8758 V**
+
+The difference from theoretical values occurs due to:
+
+- Short channel effects  
+- Mobility degradation  
+- Channel length modulation  
+- Non-ideal BSIM transistor model
+
+---
+
+### After Width Adjustment
+
+Final simulation results:
+
+| Parameter | Value |
+|----------|------|
+| Drain Current | **ID ≈ 249.77 µA** |
+| Output Voltage | **Vout ≈ 0.9047 V** |
+
+These values closely match the design targets.
+
+---
+
+# TRANSIENT ANALYSIS
+
+Transient analysis observes circuit response for time-varying input signals.
+
+<p align="center">
+<img src="TRANSIENT.png" width="720">
+</p>
+
+<p align="center">
+<b>Fig 2: Transient Response</b>
+</p>
+
+---
+
+### Output Peak-to-Peak Voltage
+
+Maximum output voltage:
+
+**Vmax = 913.417 mV**
+
+Minimum output voltage:
+
+**Vmin = 896.056 mV**
+
+$$
+V_{out(pp)} = V_{max} - V_{min}
+$$
+
+$$
+V_{out(pp)} = 913.417 - 896.056
+$$
+
+$$
+V_{out(pp)} = 17.36mV
+$$
+
+---
+
+### Input Signal
+
+**Vin(pp) = 19.11 mV**
+
+---
+
+# Theoretical Gain
+
+*(To be filled based on theoretical small-signal analysis)*
+
+---
+
+# Simulation Gain
+
+$$
+A_v = \frac{V_{out(pp)}}{V_{in(pp)}}
+$$
+
+$$
+A_v = \frac{17.36}{19.11}
+$$
+
+$$
+A_v ≈ 0.908 \; V/V
+$$
+
+---
+
+### Gain in Decibels
+
+$$
+Gain(dB) = 20\log_{10}(A_v)
+$$
+
+$$
+Gain ≈ -0.83 dB
+$$
+
+The gain is slightly less than unity because of **source degeneration introduced by the current source transistor.**
+
+---
+
+# AC ANALYSIS – GAIN AND BANDWIDTH
+
+AC analysis determines the **frequency response of the amplifier.**
+
+<p align="center">
+<img src="AC_ANALYSIS.png" width="720">
+</p>
+
+<p align="center">
+<b>Fig 3: AC Frequency Response</b>
+</p>
+
+---
+
+## Midband Gain
+
+From the flat region of the Bode plot:
+
+**Gain ≈ −0.845 dB**
+
+Convert to linear scale:
+
+$$
+A_v = 10^{\frac{-0.845}{20}}
+$$
+
+$$
+A_v ≈ 0.908 \; V/V
+$$
+
+---
+
+## −3 dB Bandwidth
+
+From the AC plot:
+
+**BW ≈ 104.75 MHz**
+
+This corresponds to the frequency where the gain falls **3 dB below the midband gain.**
+
+---
+
+## Unity Gain Frequency
+
+In this circuit the **unity gain (0 dB) frequency is not observed.**
+
+Reason:
+
+- Midband gain is **less than 1 (negative dB)**  
+- Therefore the gain **never crosses 0 dB**  
+- The circuit behaves more like a **source-degenerated amplifier stage**
+
+---
+
+# RESULT
+
+The CMOS amplifier with PMOS active load and NMOS current source biasing was successfully designed and simulated using **TSMC 180 nm technology**.
+
+The **DC operating point** showed:
+
+- **Drain current ≈ 249.77 µA**
+- **Output voltage ≈ 0.9047 V**
+
+Transient analysis produced a gain of approximately:
+
+**0.908 V/V**
+
+AC analysis showed:
+
+- **Midband gain ≈ −0.845 dB**
+- **Bandwidth ≈ 104.75 MHz**
+
+---
+
+# INFERENCE
+
+The CMOS amplifier was successfully designed and analyzed using LTspice.
+
+DC analysis confirmed correct biasing in the saturation region. Transient analysis verified signal amplification, while AC analysis revealed wide bandwidth but slightly reduced gain due to source degeneration.
+
+Differences between theoretical and simulated values arise from **non-ideal transistor effects such as channel length modulation, parasitic capacitances, and mobility degradation in the TSMC 180 nm model.**
