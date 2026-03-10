@@ -484,7 +484,7 @@ The close agreement between theoretical and simulated values confirms the effect
 
 #
 
-# EXPERIMENT 03 CIRCUIT 02
+# EXPERIMENT 02 CIRCUIT 02
 
 # AIM
 
