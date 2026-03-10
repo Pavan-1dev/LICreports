@@ -1,4 +1,4 @@
-# EXPERIMENT 02
+# EXPERIMENT 02 CIRCUIT 01
 
 # AIM
 
@@ -482,7 +482,9 @@ DC analysis confirmed saturation region operation. Transient analysis verified s
 
 The close agreement between theoretical and simulated values confirms the effectiveness of CMOS amplifier design using **LTspice and TSMC 180 nm technology**.
 
-# EXPERIMENT 03
+#
+
+# EXPERIMENT 03 CIRCUIT 02
 
 # AIM
 
