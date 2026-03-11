@@ -869,7 +869,7 @@ The gain is slightly less than unity because of **source degeneration introduced
 AC analysis determines the **frequency response of the amplifier.**
 
 <p align="center">
-<img src="ACANALYSIS02-EXP02" width="720">
+<img src="ACANALYSIS02-EXP02.png" width="720">
 </p>
 
 <p align="center">
