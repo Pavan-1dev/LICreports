@@ -721,10 +721,20 @@ $$
 
 ---
 
+
+<p align="center">
+<img src="QPOINT02-EXP02.png" width="420">
+</p>
+
+<p align="center">
+<b>Fig A:Q-POINT </b>
+</p>
+
+
 # CIRCUIT
 
 <p align="center">
-<img src="CIRCUIT.png" width="420">
+<img src="CIRCUIT02-EXP02.png" width="420">
 </p>
 
 <p align="center">
@@ -780,7 +790,7 @@ These values closely match the design targets.
 Transient analysis observes circuit response for time-varying input signals.
 
 <p align="center">
-<img src="TRANSIENT.png" width="720">
+<img src="TRANSIENT02-EXP02.png" width="720">
 </p>
 
 <p align="center">
@@ -859,7 +869,7 @@ The gain is slightly less than unity because of **source degeneration introduced
 AC analysis determines the **frequency response of the amplifier.**
 
 <p align="center">
-<img src="AC_ANALYSIS.png" width="720">
+<img src="ACANALYSIS02-EXP02" width="720">
 </p>
 
 <p align="center">
