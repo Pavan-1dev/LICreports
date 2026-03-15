@@ -1195,9 +1195,6 @@ DC analysis determines the **operating point (Q-point)** of the MOSFET amplifier
 | Output Voltage | **Vout ≈ 1.19 V** |
 | Drain Current | **ID ≈ 6.5 µA** |
 
-<p align="center">
-<img src="DCINITIAL03-EXP02.png" width="550">
-</p>
 
 ---
 
@@ -1209,7 +1206,7 @@ DC analysis determines the **operating point (Q-point)** of the MOSFET amplifier
 | Output Voltage | **Vout ≈ 0.91 V** |
 
 <p align="center">
-<img src="DCFINAL03-EXP02.png" width="550">
+<img src="Q-POINT03.png" width="550">
 </p>
 
 ---
@@ -1217,7 +1214,7 @@ DC analysis determines the **operating point (Q-point)** of the MOSFET amplifier
 # TRANSIENT ANALYSIS
 
 <p align="center">
-<img src="TRANSIENT03-EXP02.png" width="700">
+<img src="TA03-EXP02.png" width="700">
 </p>
 
 ```
@@ -1284,7 +1281,7 @@ BW ≈ 19.3 MHz
 ```
 
 <p align="center">
-<img src="BW03-EXP02.png" width="700">
+<img src="BW03-EXP03.png" width="700">
 </p>
 
 ---
