@@ -1232,7 +1232,7 @@ Vout(pp) = 237 mV
 
 # THEORETICAL GAIN
 
-(To be calculated using small signal model if required)
+
 
 ---
 
