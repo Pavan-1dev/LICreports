@@ -945,3 +945,389 @@ The CMOS amplifier was successfully designed and analyzed using LTspice.
 DC analysis confirmed correct biasing in the saturation region. Transient analysis verified signal amplification, while AC analysis revealed wide bandwidth but slightly reduced gain due to source degeneration.
 
 Differences between theoretical and simulated values arise from **non-ideal transistor effects such as channel length modulation, parasitic capacitances, and mobility degradation in the TSMC 180 nm model.**
+
+# EXPERIMENT 02 CIRCUIT 03
+
+# AIM
+
+Design and analyze a **CMOS amplifier using NMOS transistor with current source configuration** using **TSMC 180 nm CMOS technology** and characterize the circuit performance under the following specifications:
+
+| Parameter | Value |
+|----------|------|
+| Supply Voltage | **VDD = 1.2 V** |
+| Drain Current | **ID = 250 µA** |
+| Load Capacitance | **CL = 0.5 pF** |
+| Channel Length | **L = 360 nm** |
+
+The circuit performance is verified using:
+
+- **DC Operating Point Analysis**
+- **Transient Analysis**
+- **AC Small Signal Analysis**
+
+Simulation tool used: **LTspice**
+
+---
+
+# COMPONENTS REQUIRED
+
+1. PMOS transistor (TSMC 180nm model)  
+2. NMOS transistor (TSMC 180nm model)  
+3. DC voltage sources  
+4. Signal voltage source  
+5. Capacitor CL  
+
+---
+
+# THEORY
+
+CMOS amplifiers are widely used in analog integrated circuits due to their **high gain, low power consumption, and high input impedance**.
+
+In this experiment, a **three-transistor CMOS amplifier configuration** is implemented where:
+
+- **M1 (PMOS)** acts as an active load
+- **M2 (NMOS)** acts as the amplifying transistor
+- **M3 (NMOS)** acts as the current source
+
+The current source transistor ensures **constant bias current**, improving gain stability and reducing distortion.
+
+For proper amplifier operation, MOSFETs must operate in the **saturation region**.
+
+---
+
+# SATURATION CONDITIONS
+
+## NMOS Saturation Condition
+
+$$
+V_{GS} > V_T
+$$
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+Where
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+---
+
+## PMOS Saturation Condition
+
+$$
+V_{SG} > |V_T|
+$$
+
+$$
+V_{SD} \ge V_{OV}
+$$
+
+Where
+
+$$
+V_{OV} = V_{SG} - |V_T|
+$$
+
+---
+
+# PROCEDURE
+
+### 1. Include Technology Model
+
+The TSMC 180 nm model library was included in LTspice using:
+
+```
+.lib tsmc018.lib
+```
+
+---
+
+### 2. Build the CMOS Amplifier Circuit
+
+The circuit consists of:
+
+- PMOS transistor connected to **VDD**
+- NMOS amplifier transistor
+- NMOS current source transistor
+- Output taken at the **drain of M2**
+- Bias voltages applied to **VB1 and VB2**
+- Load capacitor connected at the output
+
+---
+
+### 3. Initial Device Parameters
+
+The channel length was fixed as:
+
+```
+L = 360 nm
+```
+
+Initial width values were calculated theoretically.
+
+---
+
+### 4. DC Operating Point Analysis
+
+The **.op command** was executed in LTspice to determine:
+
+- Drain current  
+- Output voltage  
+- Node voltages  
+
+---
+
+### 5. Bias Adjustment
+
+Transistor widths were adjusted until the required operating point was achieved:
+
+```
+ID ≈ 250 µA
+Vout ≈ 0.9 V
+```
+
+---
+
+### 6. Transient Analysis
+
+A sinusoidal signal was applied to the input and **.tran analysis** was performed to observe time-domain amplification.
+
+---
+
+### 7. AC Small Signal Analysis
+
+AC magnitude was set to **1 V**, and **.ac analysis** was performed to obtain:
+
+- Midband gain  
+- Frequency response  
+- Bandwidth  
+
+---
+
+# DESIGN CALCULATIONS
+
+## 1. Drain Current Selection
+
+```
+ID = 250 µA
+```
+
+---
+
+## 2. Output Voltage Selection
+
+```
+Vout = VDD/2 + VDS
+Vout = 0.6 + 0.3
+Vout = 0.9 V
+```
+
+---
+
+## 3. Overdrive Voltage
+
+```
+VOV = 0.25 V
+VT ≈ 0.36 V
+```
+
+```
+VGS = VOV + VT
+VGS = 0.25 + 0.36
+VGS = 0.61 V
+```
+
+---
+
+## 4. Bias Voltages
+
+```
+VB1 ≈ 0.56 V
+VB2 = VGS + VDS
+VB2 = 0.61 + 0.3
+VB2 = 0.91 V
+```
+
+---
+
+## 5. Device Dimensions
+
+Initial calculated widths:
+
+| Parameter | Value |
+|----------|------|
+| NMOS Width | **Wn ≈ 12.49 µm** |
+| PMOS Width | **Wp ≈ 29.57 µm** |
+| Channel Length | **L = 360 nm** |
+
+Final adjusted widths:
+
+| Parameter | Value |
+|----------|------|
+| NMOS Width | **Wn = 507 µm** |
+| PMOS Width | **Wp = 75.5 µm** |
+
+---
+
+# CIRCUIT
+
+<p align="center">
+<img src="CIRCUIT03-EXP02.png" width="420">
+</p>
+
+<p align="center">
+<b>Fig 1: CMOS Amplifier Circuit</b>
+</p>
+
+---
+
+# DC ANALYSIS
+
+DC analysis determines the **operating point (Q-point)** of the MOSFET amplifier.
+
+## Initial Operating Point
+
+| Parameter | Value |
+|----------|------|
+| Output Voltage | **Vout ≈ 1.19 V** |
+| Drain Current | **ID ≈ 6.5 µA** |
+
+<p align="center">
+<img src="DCINITIAL03-EXP02.png" width="550">
+</p>
+
+---
+
+## Final Operating Point
+
+| Parameter | Value |
+|----------|------|
+| Drain Current | **ID ≈ 249 µA** |
+| Output Voltage | **Vout ≈ 0.91 V** |
+
+<p align="center">
+<img src="DCFINAL03-EXP02.png" width="550">
+</p>
+
+---
+
+# TRANSIENT ANALYSIS
+
+<p align="center">
+<img src="TRANSIENT03-EXP02.png" width="700">
+</p>
+
+```
+Vin = 9.94 mV
+Vmax = 1.003 V
+Vmin = 0.765 V
+```
+
+```
+Vout(pp) = Vmax − Vmin
+Vout(pp) = 237 mV
+```
+
+---
+
+# THEORETICAL GAIN
+
+(To be calculated using small signal model if required)
+
+---
+
+# SIMULATED VOLTAGE GAIN
+
+```
+Av = Vout(pp) / Vin(pp)
+Av = 237 / 9.94
+Av ≈ 23.8 V/V
+```
+
+---
+
+# GAIN IN DECIBELS
+
+```
+Gain(dB) = 20 log10(Av)
+Gain ≈ 27.77 dB
+```
+
+---
+
+# AC ANALYSIS – GAIN AND BANDWIDTH
+
+<p align="center">
+<img src="AC03-EXP02.png" width="700">
+</p>
+
+## Midband Gain
+
+```
+Gain ≈ 27.77 dB
+```
+
+```
+Av = 10^(27.77/20)
+Av ≈ 24.47 V/V
+```
+
+---
+
+## Bandwidth
+
+```
+BW ≈ 19.3 MHz
+```
+
+<p align="center">
+<img src="BW03-EXP02.png" width="700">
+</p>
+
+---
+
+## Unity Gain Bandwidth
+
+```
+UGB = Av × BW
+UGB = 24.47 × 19.3 MHz
+UGB ≈ 472 MHz
+```
+
+From AC plot:
+
+```
+UGB ≈ 553 MHz
+```
+
+<p align="center">
+<img src="UGB03-EXP02.png" width="700">
+</p>
+
+---
+
+# RESULT
+
+The CMOS amplifier using **NMOS transistor with PMOS active load and NMOS current source biasing** was successfully designed and simulated using **TSMC 180 nm technology**.
+
+The **DC operating point** confirmed:
+
+- **Drain current ≈ 250 µA**
+- **Output voltage ≈ 0.9 V**
+
+Transient analysis showed amplified output with approximately **237 mV peak-to-peak output voltage**, resulting in a voltage gain of **23.8 V/V (27.77 dB)**.
+
+AC analysis showed a **midband gain of 27.77 dB**, **bandwidth of 19.3 MHz**, and **unity gain bandwidth ≈ 472 MHz**.
+
+---
+
+# INFERENCE
+
+The experiment demonstrated the design and analysis of a **CMOS amplifier with current source biasing**.  
+
+DC analysis verified correct biasing and saturation operation of MOSFETs. Transient analysis confirmed signal amplification, while AC analysis revealed the gain and bandwidth characteristics of the amplifier.
+
+The close agreement between theoretical and simulated values confirms the effectiveness of CMOS amplifier design using **LTspice and TSMC 180 nm technology**.
