@@ -415,324 +415,85 @@ The CMOS Differential amplifier with resistive load was successfully designed an
 # INFERENCE
 
 The differential amplifier achieved moderate gain and bandwidth. Linear operation was observed for small signals, while large signals resulted in nonlinear behavior. Simulation results closely match theoretical calculations.
-# EXPERIMENT 04
-
-# CMOS DIFFERENTIAL AMPLIFIER WITH ACTIVE LOAD (CIRCUIT-02)
-
----
-
-# AIM
-
-Design and analyze a **CMOS Differential Amplifier with Active Load** using **TSMC 180 nm CMOS technology** and characterize the circuit performance using:
-
-- DC Operating Point Analysis  
-- Transient Analysis  
-- AC Small Signal Analysis  
-- Input Common Mode Range  
-- Output Common Mode Range  
-- Linearity Analysis  
-
-Specifications:
-
-| Parameter | Value |
-|----------|------|
-| VDD | **0.9 V** |
-| VSS | **−0.9 V** |
-| Power Constraint | **2.2 mW** |
-| Channel Length | **540 nm** |
-| Load Capacitance | **10 pF** |
-
-Simulation Tool: **LTspice**
-
----
-
-# COMPONENTS REQUIRED
-
-1. NMOS Transistors  
-2. PMOS Transistors  
-3. Voltage Sources  
-4. Signal Sources  
-5. Capacitors  
-6. LTspice Simulator  
-
----
-
-# THEORY
-
-The CMOS differential amplifier with **active load** replaces resistive loads with PMOS current mirror loads. This increases output resistance and improves gain.
-
-The circuit consists of:
-
-- NMOS differential pair (M1, M2)  
-- PMOS current mirror load (M3, M4)  
-- Tail current source (M5)  
-
-Differential gain:
-
-$$
-A_v = g_m r_o
-$$
-
----
-
-# DIFFERENTIAL AMPLIFIER WITH ACTIVE LOAD
-
-Advantages:
-
-- Higher gain  
-- Higher output resistance  
-- Better bandwidth  
-
-When differential input is applied:
-
-- Current steers between M1 and M2  
-- PMOS current mirror converts current to voltage  
-
----
-
-# WORKING PRINCIPLE
-
-When
-
-$$
-V_{in1} > V_{in2}
-$$
-
-- M1 conducts more  
-- Output decreases  
-
-When
-
-$$
-V_{in2} > V_{in1}
-$$
-
-- M2 conducts more  
-- Output increases  
-
----
-
-# CIRCUIT DIAGRAM
+# NON-LINEAR ANALYSIS
 
 <p align="center">
-<img src="CIRCUIT-EXP04-O2.png" width="500">
+<img src="NL-EXPO4-02.png" width="700">
 </p>
 
 <p align="center">
-<b>Fig 1: CMOS Differential Amplifier with Active Load</b>
+<b>Fig 5: Non Linear Operation</b>
 </p>
 
----
-
-# DESIGN CALCULATIONS
-
-# GIVEN PARAMETERS
-
-| Parameter | Value |
-|-----------|------|
-| VDD | 0.9 V |
-| VSS | −0.9 V |
-| Power | 2.2 mW |
-| Channel Length | 540 nm |
-
----
-
-# POWER CONSTRAINT
+For large differential input:
 
 $$
-I_{SS} = \frac{2.2mW}{1.8}
+V_{in} = \pm 300mV
+$$
+
+Output waveform becomes distorted indicating nonlinear operation.
+
+Differential input range:
+
+$$
+V_{id(max)} = \sqrt{2}V_{OV}
 $$
 
 $$
-I_{SS} = 1.22 mA
-$$
-
----
-
-# DRAIN CURRENT
-
-$$
-I_D = \frac{I_{SS}}{2}
+V_{id(max)} = 1.414 \times 0.392
 $$
 
 $$
-I_D = 0.61 mA
+V_{id(max)} = 0.554V
 $$
 
----
-
-# WIDTH VALUES
+Since applied input:
 
 $$
-W_n = 30.625\mu m
+V_{id} = 600mV
 $$
 
 $$
-W_p = 38.21\mu m
+600mV > 554mV
 $$
+
+Therefore amplifier enters **non-linear region**.
+
+Observation:
+
+- Output waveform distortion observed  
+- One transistor enters triode region  
+- Linear amplification no longer maintained  
 
 ---
 
-# DC OPERATING POINT
+# COMPARISON OF THEORETICAL AND SIMULATED GAIN
 
-<p align="center">
-<img src="OP-POINT EXP04-02.png" width="500">
-</p>
-
-<p align="center">
-<b>Fig 2: DC Operating Point</b>
-</p>
-
-| Parameter | Value |
-|-----------|------|
-| Id(M1) | 0.674 mA |
-| Id(M2) | 0.674 mA |
-| Id(M5) | 1.349 mA |
-| Vout | −0.121 V |
+| Parameter | Theoretical | Simulation |
+|-----------|-------------|------------|
+| Gain | 44.7 dB | 5.54 dB |
+| Linear Gain | 172 | 1.89 |
 
 ---
 
-# OVERDRIVE VOLTAGE
+# REASON FOR DIFFERENCE
 
-$$
-V_{GS} = 0.752V
-$$
+The difference between theoretical and simulated gain occurs due to:
 
-$$
-V_{OV} = 0.392V
-$$
-
----
-
-# TRANSCONDUCTANCE
-
-$$
-g_m = \frac{2I_D}{V_{OV}}
-$$
-
-$$
-g_m = 3.44mS
-$$
+- Channel length modulation  
+- Parasitic capacitances  
+- Finite output resistance  
+- Non-ideal current mirror  
+- Device mismatch  
 
 ---
 
-# THEORETICAL GAIN
+# INFERENCE
 
-$$
-A_v = g_m r_o
-$$
-
-$$
-A_v = 172
-$$
-
-$$
-Gain = 44.7 dB
-$$
+The CMOS differential amplifier with active load was successfully designed and analyzed. The circuit achieved stable DC biasing and proper operation in saturation region. Small signal gain obtained from simulation was lower than theoretical due to parasitic and non-ideal effects. The amplifier demonstrated good bandwidth and high unity gain bandwidth. Linear operation was observed for small signals, while large input signals resulted in nonlinear distortion. Active load differential amplifier provides improved performance compared to resistive load differential amplifier.
 
 ---
 
-# TRANSIENT ANALYSIS
+# RESULT
 
-<p align="center">
-<img src="TA-EXP04-02.png" width="700">
-</p>
-
-<p align="center">
-<b>Fig 3: Transient Response</b>
-</p>
-
-| Parameter | Value |
-|-----------|------|
-| Vin | 19.95 mV |
-| Vout | 37.77 mV |
-
----
-
-# SIMULATED GAIN
-
-$$
-A_v = 1.89
-$$
-
-$$
-Gain = 5.54 dB
-$$
-
----
-
-# AC ANALYSIS
-
-<p align="center">
-<img src="AC-EXP04-02.png" width="700">
-</p>
-
-<p align="center">
-<b>Fig 4: AC Response</b>
-</p>
-
----
-
-# MIDBAND GAIN
-
-$$
-5.54 dB
-$$
-
----
-
-# CUTOFF FREQUENCY
-
-<p align="center">
-<img src="MIDBAND-EXP04-02.png" width="700">
-</p>
-
-$$
-f_H = 2.856 GHz
-$$
-
----
-
-# UNITY GAIN BANDWIDTH
-
-<p align="center">
-<img src="UGB-EXP04-02.png" width="700">
-</p>
-
-$$
-UGB = 5.06 GHz
-$$
-
----
-
-# SATURATION CHECK
-
-$$
-V_{DS} = 0.631V
-$$
-
-$$
-V_{OV} = 0.392V
-$$
-
-Since
-
-$$
-V_{DS} > V_{OV}
-$$
-
-Transistors operate in saturation.
-
----
-
-# FINAL RESULTS
-
-| Parameter | Value |
-|-----------|------|
-| Gain | 5.54 dB |
-| Bandwidth | 2.856 GHz |
-| UGB | 5.06 GHz |
-| gm | 3.44 mS |
-| VOV | 0.392 V |
-
----
+The CMOS Differential Amplifier with Active Load was successfully designed using TSMC 180 nm technology and analyzed using DC, transient and AC simulations. The amplifier achieved moderate gain and very high bandwidth with proper saturation operation.
