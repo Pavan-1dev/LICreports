@@ -880,7 +880,7 @@ $$
 # CIRCUIT DIAGRAM
 
 <p align="center">
-<img src="CIRCUIT-EXP04-O3.png" width="500">
+<img src="CIRCUIT-EXP04-03.png" width="500">
 </p>
 
 <p align="center">
