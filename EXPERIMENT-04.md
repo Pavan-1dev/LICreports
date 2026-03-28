@@ -415,3 +415,403 @@ The CMOS Differential amplifier with resistive load was successfully designed an
 # INFERENCE
 
 The differential amplifier achieved moderate gain and bandwidth. Linear operation was observed for small signals, while large signals resulted in nonlinear behavior. Simulation results closely match theoretical calculations.
+
+# COMPLETE DESIGN CALCULATIONS
+
+## Tail Current Calculation
+
+Given power constraint:
+
+$$
+P = 2.2mW
+$$
+
+Supply voltage:
+
+$$
+V_{DD} - V_{SS} = 0.9 - (-0.9)
+$$
+
+$$
+= 1.8V
+$$
+
+Tail current:
+
+$$
+I_{SS} = \frac{P}{V}
+$$
+
+$$
+I_{SS} = \frac{2.2mW}{1.8}
+$$
+
+$$
+I_{SS} = 1.22mA
+$$
+
+---
+
+## Drain Current Calculation
+
+$$
+I_D = \frac{I_{SS}}{2}
+$$
+
+$$
+I_D = \frac{1.22}{2}
+$$
+
+$$
+I_D = 0.61mA
+$$
+
+---
+
+## Simulated Drain Current
+
+From Operating Point:
+
+$$
+I_D = 0.674mA
+$$
+
+This closely matches theoretical value.
+
+---
+
+# OVERDRIVE VOLTAGE
+
+Source voltage:
+
+$$
+V_S = -0.752V
+$$
+
+Gate voltage:
+
+$$
+V_G = 0V
+$$
+
+$$
+V_{GS} = V_G - V_S
+$$
+
+$$
+V_{GS} = 0 - (-0.752)
+$$
+
+$$
+V_{GS} = 0.752V
+$$
+
+Given:
+
+$$
+V_T = 0.36V
+$$
+
+Overdrive voltage:
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+$$
+V_{OV} = 0.752 - 0.36
+$$
+
+$$
+V_{OV} = 0.392V
+$$
+
+---
+
+# TRANSCONDUCTANCE
+
+$$
+g_m = \frac{2I_D}{V_{OV}}
+$$
+
+$$
+g_m = \frac{2(0.674m)}{0.392}
+$$
+
+$$
+g_m = 3.44mS
+$$
+
+---
+
+# THEORETICAL GAIN
+
+For active load:
+
+$$
+A_v = g_m r_o
+$$
+
+Assuming:
+
+$$
+r_o = 50k\Omega
+$$
+
+$$
+A_v = 3.44m \times 50k
+$$
+
+$$
+A_v = 172
+$$
+
+---
+
+# Gain in dB
+
+$$
+Gain = 20\log(172)
+$$
+
+$$
+Gain = 44.7dB
+$$
+
+---
+
+# SIMULATED GAIN
+
+From transient:
+
+Input:
+
+$$
+V_{in} = 19.95mV
+$$
+
+Output:
+
+$$
+V_{out} = 37.77mV
+$$
+
+Gain:
+
+$$
+A_v = \frac{V_{out}}{V_{in}}
+$$
+
+$$
+A_v = 1.89
+$$
+
+Gain in dB:
+
+$$
+Gain = 20\log(1.89)
+$$
+
+$$
+Gain = 5.54dB
+$$
+
+---
+
+# MIDBAND GAIN
+
+From AC analysis:
+
+$$
+Gain = 5.54dB
+$$
+
+Linear gain:
+
+$$
+A_v = 10^{(5.54/20)}
+$$
+
+$$
+A_v = 1.89
+$$
+
+---
+
+# −3 dB CUTOFF FREQUENCY
+
+Midband gain:
+
+$$
+5.54dB
+$$
+
+−3 dB level:
+
+$$
+5.54 - 3 = 2.54dB
+$$
+
+From plot:
+
+$$
+f_H = 2.856GHz
+$$
+
+---
+
+# BANDWIDTH
+
+$$
+BW = f_H - f_L
+$$
+
+Since:
+
+$$
+f_L \approx 0
+$$
+
+$$
+BW = 2.856GHz
+$$
+
+---
+
+# UNITY GAIN BANDWIDTH
+
+Unity gain from AC plot:
+
+$$
+UGB = 5.058GHz
+$$
+
+---
+
+# INPUT COMMON MODE RANGE
+
+Minimum:
+
+$$
+V_{ICM(min)} = V_S + V_T
+$$
+
+$$
+V_{ICM(min)} = -0.752 + 0.36
+$$
+
+$$
+V_{ICM(min)} = -0.392V
+$$
+
+Maximum:
+
+$$
+V_{ICM(max)} = 0.36V
+$$
+
+Final:
+
+$$
+-0.392V \le V_{ICM} \le 0.36V
+$$
+
+---
+
+# OUTPUT COMMON MODE RANGE
+
+Minimum:
+
+$$
+V_{OCM(min)} = V_S + V_{OV}
+$$
+
+$$
+V_{OCM(min)} = -0.752 + 0.392
+$$
+
+$$
+V_{OCM(min)} = -0.36V
+$$
+
+Maximum:
+
+$$
+V_{OCM(max)} = 0.9V
+$$
+
+---
+
+# SATURATION CHECK
+
+For NMOS:
+
+Condition:
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+Drain voltage:
+
+$$
+V_D = -0.121V
+$$
+
+Source voltage:
+
+$$
+V_S = -0.752V
+$$
+
+$$
+V_{DS} = V_D - V_S
+$$
+
+$$
+V_{DS} = -0.121 - (-0.752)
+$$
+
+$$
+V_{DS} = 0.631V
+$$
+
+Since:
+
+$$
+V_{DS} > V_{OV}
+$$
+
+$$
+0.631 > 0.392
+$$
+
+Transistor operates in **saturation region**.
+
+---
+
+# FINAL RESULTS
+
+| Parameter | Value |
+|-----------|------|
+| Wn | 30.625 µm |
+| Wp | 38.21 µm |
+| ID | 0.674 mA |
+| VOV | 0.392 V |
+| gm | 3.44 mS |
+| Gain (Transient) | 1.89 |
+| Gain (AC) | 5.54 dB |
+| Bandwidth | 2.856 GHz |
+| UGB | 5.06 GHz |
+
+---
+
+# RESULT
+
+The CMOS differential amplifier with active load was successfully designed and analyzed. The circuit achieved stable biasing, moderate gain, and very high bandwidth.
+
+---
+
+# INFERENCE
+
+The active load differential amplifier provides higher output resistance and improved gain compared to resistive load amplifiers. The circuit operates in saturation region ensuring proper amplification. Small signal gain was moderate while bandwidth was very high. The difference between theoretical and simulated gain is due to parasitic capacitances, channel length modulation, and finite output resistance effects. The amplifier demonstrates good linearity for small signals and nonlinear behaviour for large input amplitudes.
