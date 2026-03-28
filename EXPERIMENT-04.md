@@ -372,7 +372,7 @@ $$
 # UNITY GAIN BANDWIDTH
 
 <p align="center">
-<img src="UGB-EXP04.png" width="720">
+<img src="UGB-EXP04-02.png" width="720">
 </p>
 
 <p align="center">
