@@ -515,7 +515,7 @@ $$
 # CIRCUIT DIAGRAM
 
 <p align="center">
-<img src="CIRCUIT-C2.png" width="500">
+<img src="CIRCUIT-EXP04-O2.png" width="500">
 </p>
 
 <p align="center">
@@ -576,7 +576,7 @@ $$
 # DC OPERATING POINT
 
 <p align="center">
-<img src="OP-C2.png" width="500">
+<img src="OP-POINT EXP04-02.png" width="500">
 </p>
 
 <p align="center">
@@ -635,7 +635,7 @@ $$
 # TRANSIENT ANALYSIS
 
 <p align="center">
-<img src="TRANSIENT-C2.png" width="700">
+<img src="TA-EXP04-02.png" width="700">
 </p>
 
 <p align="center">
@@ -664,7 +664,7 @@ $$
 # AC ANALYSIS
 
 <p align="center">
-<img src="AC-C2.png" width="700">
+<img src="AC-EXP04-02.png" width="700">
 </p>
 
 <p align="center">
@@ -684,7 +684,7 @@ $$
 # CUTOFF FREQUENCY
 
 <p align="center">
-<img src="CUTOFF-C2.png" width="700">
+<img src="MIDBAND-EXP04-02.png" width="700">
 </p>
 
 $$
@@ -696,7 +696,7 @@ $$
 # UNITY GAIN BANDWIDTH
 
 <p align="center">
-<img src="UGB-C2.png" width="700">
+<img src="UGB-EXP04-02.png" width="700">
 </p>
 
 $$
