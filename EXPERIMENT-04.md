@@ -805,4 +805,387 @@ The CMOS differential amplifier with active load provides improved gain and outp
 ---
 
 ---
+# EXPERIMENT 04
 
+# CMOS DIFFERENTIAL AMPLIFIER — CIRCUIT 03  
+# Differential Amplifier with Current Mirror Load
+
+---
+
+# AIM
+
+Design and analyze a **CMOS Differential Amplifier with Current Mirror Load** using **TSMC 180 nm CMOS technology** and characterize the circuit performance using:
+
+- DC Operating Point Analysis  
+- Transient Analysis  
+- AC Small Signal Analysis  
+- Gain Calculation  
+- Bandwidth  
+- Unity Gain Bandwidth  
+- Linearity Analysis  
+
+---
+
+# SPECIFICATIONS
+
+| Parameter | Value |
+|-----------|------|
+| VDD | 0.9 V |
+| VSS | −0.9 V |
+| Power | 2.2 mW |
+| Channel Length | 540 nm |
+| Load Capacitance | 10 pF |
+
+Simulation Tool: **LTspice**
+
+---
+
+# COMPONENTS REQUIRED
+
+1. NMOS Transistors  
+2. PMOS Transistors  
+3. Current Source  
+4. Voltage Sources  
+5. Capacitors  
+6. LTspice  
+
+---
+
+# THEORY
+
+Differential amplifiers amplify the difference between two input signals.  
+In this circuit, **current mirror load** is used instead of resistive load.
+
+Advantages:
+
+- Higher gain  
+- Better output resistance  
+- Reduced chip area  
+- Improved performance  
+
+The circuit consists of:
+
+- NMOS Differential Pair  
+- PMOS Current Mirror Load  
+- Tail Current Source  
+
+Differential gain:
+
+$$
+A_v = g_m r_o
+$$
+
+---
+
+# CIRCUIT DIAGRAM
+
+<p align="center">
+<img src="CIRCUIT-EXP04-O3.png" width="500">
+</p>
+
+<p align="center">
+<b>Fig 1: Differential Amplifier with Current Mirror Load</b>
+</p>
+
+---
+
+# DESIGN CALCULATIONS
+
+# Given Parameters
+
+| Parameter | Value |
+|-----------|------|
+| VDD | 0.9 V |
+| VSS | −0.9 V |
+| Power | 2.2 mW |
+
+---
+
+# Tail Current
+
+$$
+I_{SS} = \frac{P}{V_{DD}-V_{SS}}
+$$
+
+$$
+I_{SS} = \frac{2.2mW}{1.8}
+$$
+
+$$
+I_{SS} = 1.22mA
+$$
+
+---
+
+# Drain Current
+
+$$
+I_D = \frac{I_{SS}}{2}
+$$
+
+$$
+I_D = 0.61mA
+$$
+
+---
+
+# Current Mirror Operation
+
+- M2 and M5 form current mirror  
+- M2 acts as reference transistor  
+- M5 mirrors current  
+- Equal current distribution ensured  
+
+---
+
+# Output Voltage
+
+$$
+V_{out1} ≈ V_{out2} ≈ 0V
+$$
+
+Ensures maximum swing
+
+---
+
+# Tail Node Voltage
+
+$$
+V_P ≈ V_{SS} + V_{OV}
+$$
+
+$$
+V_P ≈ -0.9 + 0.2
+$$
+
+$$
+V_P ≈ -0.7V
+$$
+
+---
+
+# DC OPERATING POINT
+
+<p align="center">
+<img src="OP-POINT-EXP04-03.png" width="600">
+</p>
+
+<p align="center">
+<b>Fig 2: DC Operating Point</b>
+</p>
+
+---
+
+# Saturation Condition
+
+NMOS:
+
+$$
+V_{DS} ≥ V_{OV}
+$$
+
+PMOS:
+
+$$
+V_{SD} ≥ V_{OV}
+$$
+
+All transistors operate in **saturation**
+
+---
+
+# TRANSIENT ANALYSIS
+
+Load Capacitance
+
+$$
+C_L = 10pF
+$$
+
+---
+
+# Small Signal Analysis
+
+Input
+
+$$
+V_{in1} = 10mV
+$$
+
+$$
+V_{in2} = -10mV
+$$
+
+$$
+V_{id} = 20mV
+$$
+
+---
+
+# Small Signal Output
+
+<p align="center">
+<img src="TRANSIENT-SMALL-EXP04-03.png" width="700">
+</p>
+
+<p align="center">
+<b>Fig 3: Small Signal Output</b>
+</p>
+
+---
+
+# Observation
+
+- Sinusoidal output  
+- Linear behavior  
+- No distortion  
+
+---
+
+# Large Signal Analysis
+
+Input
+
+$$
+V_{in1} = 300mV
+$$
+
+$$
+V_{in2} = -300mV
+$$
+
+$$
+V_{id} = 600mV
+$$
+
+---
+
+# Large Signal Output
+
+<p align="center">
+<img src="TRANSIENT-LARGE-EXP04-03.png" width="700">
+</p>
+
+<p align="center">
+<b>Fig 4: Large Signal Output</b>
+</p>
+
+---
+
+# Observation
+
+- Distortion observed  
+- Nonlinear behavior  
+
+---
+
+# Gain Calculation
+
+Given
+
+$$
+V_{out(pp)} = 11.9mV
+$$
+
+$$
+V_{in(pp)} = 20mV
+$$
+
+$$
+A_v = \frac{11.9}{20}
+$$
+
+$$
+A_v = 0.595
+$$
+
+---
+
+# Gain in dB
+
+$$
+Gain = 20log(0.595)
+$$
+
+$$
+Gain = -4.5 dB
+$$
+
+---
+
+# AC ANALYSIS
+
+<p align="center">
+<img src="AC-EXP04-03.png" width="700">
+</p>
+
+<p align="center">
+<b>Fig 5: AC Response</b>
+</p>
+
+---
+
+# Midband Gain
+
+$$
+A_v ≈ g_m(r_o || r_o)
+$$
+
+---
+
+# Bandwidth
+
+$$
+BW = f_H - f_L
+$$
+
+$$
+f_L ≈ 0
+$$
+
+---
+
+# Cutoff Frequency
+
+<p align="center">
+<img src="CUTOFF-EXP04-03.png" width="700">
+</p>
+
+---
+
+# Unity Gain Bandwidth
+
+<p align="center">
+<img src="UGB-EXP04-03.png" width="700">
+</p>
+
+---
+
+# FINAL RESULTS
+
+| Parameter | Value |
+|-----------|------|
+| Tail Current | 1.22 mA |
+| Drain Current | 0.61 mA |
+| Gain | −4.5 dB |
+| Bandwidth | High |
+| UGB | High |
+| Linearity | Good |
+
+---
+
+# INFERENCE
+
+- Current mirror load increases gain  
+- Higher output resistance  
+- Better performance than resistive load  
+- Linear operation for small signal  
+- Nonlinear behavior for large signal  
+
+---
+
+# RESULT
+
+The CMOS differential amplifier with current mirror load was successfully designed and analyzed. The circuit achieved proper biasing and demonstrated linear amplification for small signals and nonlinear behavior for large signals. High bandwidth and improved performance were observed.
+
+---
