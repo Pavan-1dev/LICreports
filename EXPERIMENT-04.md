@@ -806,6 +806,3 @@ The CMOS differential amplifier with active load provides improved gain and outp
 
 ---
 
-# RESULT
-
-The CMOS Differential Amplifier with Active Load was successfully designed using TSMC 180 nm technology and analyzed using DC, transient and AC simulations. The amplifier achieved moderate gain and very high bandwidth with proper saturation operation.
