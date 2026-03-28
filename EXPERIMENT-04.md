@@ -96,7 +96,7 @@ Thus differential amplification occurs.
 # CIRCUIT DIAGRAM
 
 <p align="center">
-<img src="CIRCUIT-EXP04.png" width="500">
+<img src="CIRCUIT04.png" width="500">
 </p>
 
 <p align="center">
@@ -186,7 +186,7 @@ $$
 # DC OPERATING POINT
 
 <p align="center">
-<img src="DC-EXP04.png" width="500">
+<img src="OP-POINTEXP04.png" width="500">
 </p>
 
 <p align="center">
@@ -270,7 +270,7 @@ $$
 # TRANSIENT ANALYSIS
 
 <p align="center">
-<img src="TRANSIENT-LINEAR-EXP04.png" width="720">
+<img src="TA-EXP04.png" width="720">
 </p>
 
 <p align="center">
@@ -287,7 +287,7 @@ $$
 # NON LINEAR REGION
 
 <p align="center">
-<img src="TRANSIENT-NONLINEAR-EXP04.png" width="720">
+<img src="NL-EXP04.png" width="720">
 </p>
 
 <p align="center">
