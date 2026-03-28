@@ -416,110 +416,125 @@ The CMOS Differential amplifier with resistive load was successfully designed an
 
 The differential amplifier achieved moderate gain and bandwidth. Linear operation was observed for small signals, while large signals resulted in nonlinear behavior. Simulation results closely match theoretical calculations.
 
-# COMPLETE DESIGN CALCULATIONS
+# EXPERIMENT 04
 
-## Tail Current Calculation
+# CMOS DIFFERENTIAL AMPLIFIER WITH ACTIVE LOAD (CIRCUIT-02)
 
-Given power constraint:
+---
+
+# AIM
+
+To design and analyze a **CMOS Differential Amplifier with PMOS Active Load** using **TSMC 180 nm technology** and determine:
+
+- DC Operating Point  
+- Transient Response  
+- AC Characteristics  
+- Gain, Bandwidth and UGB  
+- Linearity and Saturation  
+
+---
+
+# THEORY
+
+A differential amplifier amplifies the difference between two input signals while rejecting common-mode signals.
+
+In this circuit:
+
+- M1, M2 → NMOS differential pair  
+- M3, M4 → PMOS current mirror load  
+- M5 → Tail current source  
+
+Advantages of active load:
+
+- High output resistance  
+- High gain  
+- Better performance than resistive load  
+
+Gain is given by:
 
 $$
-P = 2.2mW
-$$
-
-Supply voltage:
-
-$$
-V_{DD} - V_{SS} = 0.9 - (-0.9)
-$$
-
-$$
-= 1.8V
-$$
-
-Tail current:
-
-$$
-I_{SS} = \frac{P}{V}
-$$
-
-$$
-I_{SS} = \frac{2.2mW}{1.8}
-$$
-
-$$
-I_{SS} = 1.22mA
+A_v = g_m r_o
 $$
 
 ---
 
-## Drain Current Calculation
+# WORKING PRINCIPLE
+
+- Input signals applied to M1 and M2  
+- Tail current splits based on input difference  
+- PMOS load mirrors current  
+- Output appears at drain nodes  
+
+---
+
+# CIRCUIT DIAGRAM
+
+📌 **ADD IMAGE HERE → CIRCUIT-C2.png**
+
+---
+
+# PROCEDURE
+
+1. Draw the differential amplifier circuit in LTspice  
+2. Set supply voltages:  
+   - VDD = 0.9V  
+   - VSS = −0.9V  
+3. Apply differential input signals  
+4. Set transistor dimensions (W/L)  
+5. Run **Operating Point Analysis (.op)**  
+6. Perform **Transient Analysis (.tran)**  
+7. Perform **AC Analysis (.ac)**  
+8. Measure gain, bandwidth and UGB  
+
+---
+
+# DESIGN CALCULATIONS
+
+## Tail Current
 
 $$
-I_D = \frac{I_{SS}}{2}
-$$
-
-$$
-I_D = \frac{1.22}{2}
-$$
-
-$$
-I_D = 0.61mA
+I_{SS} = \frac{2.2mW}{1.8} = 1.22mA
 $$
 
 ---
 
-## Simulated Drain Current
-
-From Operating Point:
+## Drain Current
 
 $$
-I_D = 0.674mA
+I_D = \frac{I_{SS}}{2} = 0.61mA
 $$
 
-This closely matches theoretical value.
+---
+
+# DC OPERATING POINT
+
+📌 **ADD IMAGE HERE → DC-C2.png**
+
+| Parameter | Value |
+|-----------|------|
+| Id(M1) | 0.674 mA |
+| Id(M2) | 0.674 mA |
+| Id(M5) | 1.349 mA |
+| Vout | −0.121 V |
+
+---
+
+# WIDTH VALUES
+
+$$
+W_n = 30.625\mu m
+$$
+
+$$
+W_p = 38.21\mu m
+$$
 
 ---
 
 # OVERDRIVE VOLTAGE
 
-Source voltage:
-
-$$
-V_S = -0.752V
-$$
-
-Gate voltage:
-
-$$
-V_G = 0V
-$$
-
-$$
-V_{GS} = V_G - V_S
-$$
-
-$$
-V_{GS} = 0 - (-0.752)
-$$
-
 $$
 V_{GS} = 0.752V
-$$
-
-Given:
-
-$$
-V_T = 0.36V
-$$
-
-Overdrive voltage:
-
-$$
-V_{OV} = V_{GS} - V_T
-$$
-
-$$
-V_{OV} = 0.752 - 0.36
 $$
 
 $$
@@ -531,14 +546,6 @@ $$
 # TRANSCONDUCTANCE
 
 $$
-g_m = \frac{2I_D}{V_{OV}}
-$$
-
-$$
-g_m = \frac{2(0.674m)}{0.392}
-$$
-
-$$
 g_m = 3.44mS
 $$
 
@@ -546,32 +553,8 @@ $$
 
 # THEORETICAL GAIN
 
-For active load:
-
-$$
-A_v = g_m r_o
-$$
-
-Assuming:
-
-$$
-r_o = 50k\Omega
-$$
-
-$$
-A_v = 3.44m \times 50k
-$$
-
 $$
 A_v = 172
-$$
-
----
-
-# Gain in dB
-
-$$
-Gain = 20\log(172)
 $$
 
 $$
@@ -580,79 +563,57 @@ $$
 
 ---
 
+# TRANSIENT ANALYSIS (LINEAR)
+
+📌 **ADD IMAGE HERE → TRANSIENT-LINEAR-C2.png**
+
+| Parameter | Value |
+|-----------|------|
+| Vin | 19.95 mV |
+| Vout | 37.77 mV |
+
+---
+
 # SIMULATED GAIN
-
-From transient:
-
-Input:
-
-$$
-V_{in} = 19.95mV
-$$
-
-Output:
-
-$$
-V_{out} = 37.77mV
-$$
-
-Gain:
-
-$$
-A_v = \frac{V_{out}}{V_{in}}
-$$
 
 $$
 A_v = 1.89
 $$
 
-Gain in dB:
-
-$$
-Gain = 20\log(1.89)
-$$
-
 $$
 Gain = 5.54dB
 $$
+
+---
+
+# NON-LINEAR REGION
+
+📌 **ADD IMAGE HERE → TRANSIENT-NONLINEAR-C2.png**
+
+Observation:
+
+- Output distortion  
+- Non-linear behaviour  
+
+---
+
+# AC ANALYSIS
+
+📌 **ADD IMAGE HERE → AC-C2.png**
 
 ---
 
 # MIDBAND GAIN
 
-From AC analysis:
-
 $$
 Gain = 5.54dB
 $$
 
-Linear gain:
-
-$$
-A_v = 10^{(5.54/20)}
-$$
-
-$$
-A_v = 1.89
-$$
-
 ---
 
-# −3 dB CUTOFF FREQUENCY
+# −3 dB FREQUENCY
 
-Midband gain:
-
-$$
-5.54dB
-$$
-
-−3 dB level:
-
-$$
-5.54 - 3 = 2.54dB
-$$
-
-From plot:
+📌 **ADD IMAGE HERE → CUTOFF-C2.png**
 
 $$
 f_H = 2.856GHz
@@ -663,16 +624,6 @@ $$
 # BANDWIDTH
 
 $$
-BW = f_H - f_L
-$$
-
-Since:
-
-$$
-f_L \approx 0
-$$
-
-$$
 BW = 2.856GHz
 $$
 
@@ -680,37 +631,15 @@ $$
 
 # UNITY GAIN BANDWIDTH
 
-Unity gain from AC plot:
+📌 **ADD IMAGE HERE → UGB-C2.png**
 
 $$
-UGB = 5.058GHz
+UGB = 5.06GHz
 $$
 
 ---
 
 # INPUT COMMON MODE RANGE
-
-Minimum:
-
-$$
-V_{ICM(min)} = V_S + V_T
-$$
-
-$$
-V_{ICM(min)} = -0.752 + 0.36
-$$
-
-$$
-V_{ICM(min)} = -0.392V
-$$
-
-Maximum:
-
-$$
-V_{ICM(max)} = 0.36V
-$$
-
-Final:
 
 $$
 -0.392V \le V_{ICM} \le 0.36V
@@ -720,60 +649,20 @@ $$
 
 # OUTPUT COMMON MODE RANGE
 
-Minimum:
-
 $$
-V_{OCM(min)} = V_S + V_{OV}
-$$
-
-$$
-V_{OCM(min)} = -0.752 + 0.392
-$$
-
-$$
-V_{OCM(min)} = -0.36V
-$$
-
-Maximum:
-
-$$
-V_{OCM(max)} = 0.9V
+-0.36V \le V_{OCM} \le 0.9V
 $$
 
 ---
 
 # SATURATION CHECK
 
-For NMOS:
-
-Condition:
-
-$$
-V_{DS} \ge V_{OV}
-$$
-
-Drain voltage:
-
-$$
-V_D = -0.121V
-$$
-
-Source voltage:
-
-$$
-V_S = -0.752V
-$$
-
-$$
-V_{DS} = V_D - V_S
-$$
-
-$$
-V_{DS} = -0.121 - (-0.752)
-$$
-
 $$
 V_{DS} = 0.631V
+$$
+
+$$
+V_{OV} = 0.392V
 $$
 
 Since:
@@ -782,36 +671,26 @@ $$
 V_{DS} > V_{OV}
 $$
 
-$$
-0.631 > 0.392
-$$
-
-Transistor operates in **saturation region**.
+Transistor operates in **Saturation Region**
 
 ---
 
-# FINAL RESULTS
+# COMPARISON TABLE
 
-| Parameter | Value |
-|-----------|------|
-| Wn | 30.625 µm |
-| Wp | 38.21 µm |
-| ID | 0.674 mA |
-| VOV | 0.392 V |
-| gm | 3.44 mS |
-| Gain (Transient) | 1.89 |
-| Gain (AC) | 5.54 dB |
-| Bandwidth | 2.856 GHz |
-| UGB | 5.06 GHz |
+| Parameter | Theoretical | Simulation |
+|-----------|-------------|------------|
+| Gain | 44.7 dB | 5.54 dB |
+| Bandwidth | — | 2.856 GHz |
+| UGB | — | 5.06 GHz |
 
 ---
 
 # RESULT
 
-The CMOS differential amplifier with active load was successfully designed and analyzed. The circuit achieved stable biasing, moderate gain, and very high bandwidth.
+The CMOS differential amplifier with active load was successfully designed and analyzed. The circuit achieved proper biasing and stable operation.
 
 ---
 
 # INFERENCE
 
-The active load differential amplifier provides higher output resistance and improved gain compared to resistive load amplifiers. The circuit operates in saturation region ensuring proper amplification. Small signal gain was moderate while bandwidth was very high. The difference between theoretical and simulated gain is due to parasitic capacitances, channel length modulation, and finite output resistance effects. The amplifier demonstrates good linearity for small signals and nonlinear behaviour for large input amplitudes.
+The active load differential amplifier provides improved gain and output resistance. However, practical gain is lower than theoretical due to parasitic effects. The circuit shows good bandwidth and high unity gain frequency. Linear operation is observed for small signals, while large signals introduce distortion. The amplifier operates in saturation ensuring proper amplification.
